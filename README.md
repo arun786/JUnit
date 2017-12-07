@@ -39,3 +39,13 @@
     public static void afterClass(){
         System.out.println("8. After class is invoked");
     }
+    
+    
+# Assert
+
+1. assertTrue(condition) : if the condition is true, the test passes else fails.
+2. assertTrue(message and condition) : if the condition is true, the test passes else fails with the message.
+
+        assertTrue(2 < 3);
+        
+        assertTrue("2 is less than 3", 2 < 3);
