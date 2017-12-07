@@ -44,8 +44,15 @@
 # Assert
 
 1. assertTrue(condition) : if the condition is true, the test passes else fails.
-2. assertTrue(message and condition) : if the condition is true, the test passes else fails with the message.
+2. assertTrue(message,condition) : if the condition is true, the test passes else fails with the message.
 
         assertTrue(2 < 3);
         
         assertTrue("2 is less than 3", 2 < 3);
+        
+3. assertFalse(condition) : if the condition is false, the test passes else fails.
+4. assertFalse(message,condition) : if the condition is false, the test passes else if fails with a message.
+
+        assertFalse(3 > 5);
+        
+        assertFalse("3 is less than 5", 3 > 5);
