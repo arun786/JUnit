@@ -56,3 +56,52 @@
         assertFalse(3 > 5);
         
         assertFalse("3 is less than 5", 3 > 5);
+        
+5. assertNull(null) : if the parameter is null, the test passes else fails.
+6. assertNotNull(name) : if the parameter is not null, the test passes else fails.
+
+        String name = null;
+        assertNull(name);
+
+        name = "arun";
+        assertNotNull(name);
+
+7. assertEquals(String message, Object expected, Object actual). If the objects are the same, the test passes else fails with the message.
+
+        assertEquals("Objects are not same", nameExpected, nameActual);
+        
+8. assertEquals(Object expected, Object actual). if the objects are same, test passes else fails.
+
+        assertEquals(nameExpected, nameActual);
+        
+9. assertEquals(primitive expected, primitive actual); if the primitive types are the same and equal,test passes else fails
+when the objects are passed, the equals method is invoked.
+
+        assertEquals(10,10);
+        
+10. assertSame(Object expected, Object actual) : if the object are pointing to the same reference, it passes else fails.
+It checks the reference using the == operator.
+        String name1 = "arun";
+        String name2 = new String("arun");
+        assertSame(name1, name2); 
+        
+        the above assert will fail.
+        
+        String name1 = "arun";
+        String name2 = "arun";
+        
+        assertSame(name1,name2);
+        
+        the above assert will pass, as both point to the same reference.
+        
+11. assertEquals(double,double) is deprecated as the results for it are not predictable.
+
+        double sum1 = .98 + .998;
+        assertEquals(sum1, 1.988);
+        
+        This will fail.
+        
+        double sum1 = .98 + .998;
+        assertEquals(sum1, 1.988,.10);
+        
+        this will pass.
