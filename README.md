@@ -105,3 +105,19 @@ It checks the reference using the == operator.
         assertEquals(sum1, 1.988,.10);
         
         this will pass.
+        
+# Exception Handling
+
+    @Test(expected = RuntimeException.class)
+    public void exceptionThrown(){
+        throw new RuntimeException();
+    }
+    
+    the above test case will pass. 
+    
+     @Test(expected = RuntimeException.class)
+     public void exceptionThrown(){
+         throw new NullPointerException();
+     }
+     
+     The above test will also pass.
