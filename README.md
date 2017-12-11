@@ -121,3 +121,59 @@ It checks the reference using the == operator.
      }
      
      The above test will also pass.
+     
+# to specify the execution order of the test.
+
+Test when executed can execute in a ramdom order. the order is not guaranteed.
+
+To fix the order of the methods which is to be executed, we can use the 
+@FixMethodOrder
+
+    import org.junit.Test;
+
+    public class OrderOfTests {
+
+    @Test
+    public void remove() {
+        System.out.println("Remove the data");
+    }
+
+    @Test
+    public void edit() {
+        System.out.println("Editing the data");
+    }
+
+    @Test
+    public void create() {
+        System.out.println("Create a data");
+    }
+}
+
+the above code will execute the methods in any order. If we want that the methods should be executed
+in the a fixed order, we can use the anotation
+
+@FixMethodOrder for the class
+
+    import org.junit.FixMethodOrder;
+    import org.junit.Test;
+    import org.junit.runners.MethodSorters;
+
+    @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+    public class OrderOfTests {
+
+    @Test
+    public void edit() {
+        System.out.println("Editing the data");
+    }
+
+    @Test
+    public void create() {
+        System.out.println("Create a data");
+    }
+
+    @Test
+    public void remove() {
+        System.out.println("Remove the data");
+    }
+}
+
