@@ -254,3 +254,18 @@ below is the example.
     
     
     Process finished with exit code 0
+
+# assertThat(Object actual, Matcher match)
+
+assertThat matches the partial or exact object.
+
+    @Test
+    public void AssertThatExplained(){
+    
+        String name = "adwiti";
+        assertThat(name, is("adwiti"));
+        assertThat(name, equalTo("adwiti"));
+        assertThat(name, not(equalTo("arun")));
+        assertThat(name, is(not("arun")));
+    
+    }
