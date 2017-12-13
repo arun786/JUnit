@@ -342,7 +342,7 @@ we can test a collection using hasItem and hasItems.
 
 # Exploring String matchers
 
-we can match string with three methods.
+we can match string with three methods. These methods can be used only with String
 
 1. startsWith
 
@@ -352,12 +352,17 @@ we can match string with three methods.
 
 
     import org.junit.Test;
+    
     import org.junit.runner.RunWith;
+    
     import org.junit.runners.JUnit4;
     
     import static org.hamcrest.CoreMatchers.containsString;
+    
     import static org.hamcrest.CoreMatchers.endsWith;
+    
     import static org.hamcrest.core.StringStartsWith.startsWith;
+    
     import static org.junit.Assert.assertThat;
 
     @RunWith(JUnit4.class)
