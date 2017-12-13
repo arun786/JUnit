@@ -281,7 +281,9 @@ different matchers are as below.
 5. not
 
     import static org.hamcrest.CoreMatchers.*;
+    
     import static org.hamcrest.core.Is.is;
+    
     import static org.junit.Assert.assertThat;
 
 
@@ -296,5 +298,43 @@ different matchers are as below.
         assertThat(marks,not(anyOf(is(100.01),is(20.00),is(99.00)))); //none of the value should match
         assertThat(marks, anyOf(is(100.00), is(20.00))); //any of the values should match
         assertThat(marks, not(allOf(is(1.00),is(100.00),is(2000.00)))); //any one value should match
+    }
+}
+
+
+# Testing a collection 
+
+we can test a collection using hasItem and hasItems.
+
+    import org.junit.Test;
+
+    import org.junit.runner.RunWith;
+
+    import org.junit.runners.JUnit4;
+    
+    import java.util.Arrays;
+
+    import java.util.List;
+    
+    import static org.hamcrest.CoreMatchers.hasItem;
+
+    import static org.hamcrest.CoreMatchers.hasItems;
+
+    import static org.hamcrest.CoreMatchers.not;
+
+    import static org.junit.Assert.assertThat;
+
+    @RunWith(JUnit4.class)
+    public class HasItemTest {
+
+    @Test
+    public void testingMultipleItems(){
+
+        List<String> names = Arrays.asList("Arun","Adwiti","Shipra");
+
+        assertThat(names, hasItem("Arun"));
+        assertThat(names, hasItems("Adwiti","Shipra"));
+        assertThat(names, not(hasItem("sachin")));
+
     }
 }
