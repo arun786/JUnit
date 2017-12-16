@@ -410,18 +410,12 @@ Step 6 : Write the test method.
     }
     
     
-    import com.arun.Factorial;
-    
-    import org.junit.Test;
-    
+    import com.arun.Factorial;    
+    import org.junit.Test;    
     import org.junit.runner.RunWith;
-    
     import org.junit.runners.Parameterized;
-    
     import java.util.Arrays;
-    
     import java.util.Collection;
-    
     import static org.junit.Assert.assertEquals;
     
     @RunWith(Parameterized.class)
