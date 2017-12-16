@@ -377,3 +377,73 @@ we can match string with three methods. These methods can be used only with Stri
             assertThat(message, containsString("and"));
         }
     }
+
+# Parameterized test
+
+If we want to test factorial of numbers, we can use 
+
+org.junit.runners.Parameterized class
+
+Step 1 : create the factorial class
+
+Step 2 : Create a test class which has got two instance variables one in the number for
+which we need to calculate the factorial and the other is the result.
+
+Step 3: initialize the values via Constructor.
+
+Step 4: create a method which returns a Collection of Object ( 1 - D), and has got the factorial
+data, first index being number and second the result.
+
+Step 5: Parametirize of using @Parameters.
+
+Step 6 : Write the test method.
+
+
+    /**
+     * This class calculates the factorial of a number
+     */
+    public class Factorial {
+        public int factorial(int number) {
+            if (number == 0) return 1;
+            return number * factorial(number - 1);
+        }
+    }
+    
+    
+    import com.arun.Factorial;
+    
+    import org.junit.Test;
+    
+    import org.junit.runner.RunWith;
+    
+    import org.junit.runners.Parameterized;
+    
+    import java.util.Arrays;
+    
+    import java.util.Collection;
+    
+    import static org.junit.Assert.assertEquals;
+    
+    @RunWith(Parameterized.class)
+    public class FactorialTest {
+        private int number;
+        private int expectedValue;
+    
+        public FactorialTest(int number, int expectedValue) {
+            this.number = number;
+            this.expectedValue = expectedValue;
+        }
+    
+        @Parameterized.Parameters
+        public static Collection<Object[]> factorialData() {
+            return Arrays.asList(
+                    new Object[][]{{0, 1}, {1, 1}, {2, 2}, {3, 6}, {4, 24}, {5, 120}}
+            );
+        }
+    
+        @Test
+        public void testFactorial() {
+            Factorial fac = new Factorial();
+            assertEquals(fac.factorial(number), expectedValue);
+        }
+    }
