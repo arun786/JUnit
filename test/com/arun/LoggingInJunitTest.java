@@ -3,18 +3,13 @@ package com.arun;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import uk.org.lidalia.slf4jext.Level;
+import uk.org.lidalia.slf4jtest.LoggingEvent;
 import uk.org.lidalia.slf4jtest.TestLogger;
 import uk.org.lidalia.slf4jtest.TestLoggerFactory;
 
-import static java.util.Arrays.asList;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static uk.org.lidalia.slf4jtest.LoggingEvent.error;
-
 public class LoggingInJunitTest {
 
-    @Autowired
     private LoggingInJUnit loggingInJUnit;
 
     private TestLogger logger;
@@ -23,16 +18,34 @@ public class LoggingInJunitTest {
     public void setUp() {
         loggingInJUnit = new LoggingInJUnit();
         logger = TestLoggerFactory.getTestLogger(LoggingInJUnit.class);
+        logger.clearAll();
     }
 
     @Test
     public void howToLogTest() {
         loggingInJUnit.howToLog();
-        assertThat(logger.getLoggingEvents(), is(asList(error("Denominator cannot be Zero"))));
+        assertALog("Denominator cannot be Zero ", Level.ERROR, logger);
+    }
+
+    @Test
+    public void howToLogWhenParameterIsPassedIntheLogTest() {
+        loggingInJUnit.howToLogWhenParameterIsPassedIntheLog();
+        assertALog("Denominator cannot be Zero {}", Level.ERROR, logger);
     }
 
     @After
-    public void destroy(){
+    public void destroy() {
         TestLoggerFactory.clear();
+    }
+
+
+    public void assertALog(String expectedMessage, Level level, TestLogger logger) {
+
+        for(LoggingEvent events : logger.getLoggingEvents()){
+            if(events.getMessage().startsWith(expectedMessage) && events.getLevel() == level){
+                return;
+            }
+        }
+        throw new AssertionError("Message : " + expectedMessage + " Level : " + level + " not found");
     }
 }
