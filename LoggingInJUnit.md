@@ -36,6 +36,16 @@ Step 2 : Create a class where you need to log some info, like when there is an e
                 logger.error("Denominator cannot be Zero");
             }
         }
+        
+        public void howToLogWhenParameterIsPassedIntheLog(){
+            int num = 10;
+            int den = 0;
+            try {
+                int result = num / den;
+            } catch (ArithmeticException e) {
+                logger.error("Denominator cannot be Zero {}", e.getMessage());
+            }
+        }
     }
 
 Step 3 : Create A JUnit Test class, and do the below.
