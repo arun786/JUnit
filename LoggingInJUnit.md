@@ -2,8 +2,15 @@
 
 Few things which we need to do before we log the event in unit test cases.
 
-Step 1 : Add Maven dependency for SL4J.
+Step 1 : Add Maven dependency for SL4J and for unit test
 
+        <dependency>
+            <groupId>uk.org.lidalia</groupId>
+            <artifactId>slf4j-test</artifactId>
+            <version>1.0.0</version>
+            <scope>test</scope>
+        </dependency>
+        
         <dependency>
             <groupId>uk.org.lidalia</groupId>
             <artifactId>slf4j-test</artifactId>
