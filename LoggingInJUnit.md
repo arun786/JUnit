@@ -69,4 +69,9 @@ Step 3 : Create A JUnit Test class, and do the below.
                 loggingInJUnit.howToLog();
                 assertThat(logger.getLoggingEvents(), is(asList(error("Denominator cannot be Zero"))));
             }
+            
+            @After
+            public void destroy(){
+                TestLoggerFactory.clear();
+            }
         }

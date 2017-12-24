@@ -1,5 +1,6 @@
 package com.arun;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,10 @@ public class LoggingInJunitTest {
     public void howToLogTest() {
         loggingInJUnit.howToLog();
         assertThat(logger.getLoggingEvents(), is(asList(error("Denominator cannot be Zero"))));
+    }
+
+    @After
+    public void destroy(){
+        TestLoggerFactory.clear();
     }
 }
